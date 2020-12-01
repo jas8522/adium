@@ -37,9 +37,6 @@
 										  forGroup:GROUP_ACCOUNT_STATUS];
 	
     //Install the services
-	[ESAIMService registerService];
-	[ESDotMacService registerService];
-	[AIMobileMeService registerService];
 	[ESICQService registerService];
 	[PurpleFacebookService registerService];
 	[ESGaduGaduService registerService];

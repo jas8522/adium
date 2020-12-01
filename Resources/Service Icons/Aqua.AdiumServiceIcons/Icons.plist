@@ -6,8 +6,6 @@
 	<integer>1</integer>
 	<key>Interface-Large</key>
 	<dict>
-		<key>AIM</key>
-		<string>aim.png</string>
 		<key>Bonjour</key>
 		<string>bonjour.png</string>
 		<key>Facebook</key>
@@ -24,8 +22,6 @@
 		<string>jabber.png</string>
 		<key>LiveJournal</key>
 		<string>livejournal.png</string>
-		<key>Mac</key>
-		<string>dotmac.png</string>
 		<key>MSN</key>
 		<string>msn.png</string>
 		<key>MySpace</key>
@@ -45,8 +41,6 @@
 	</dict>
 	<key>Interface-Small</key>
 	<dict>
-		<key>AIM</key>
-		<string>aim-small.png</string>
 		<key>Bonjour</key>
 		<string>bonjour-small.png</string>
 		<key>Facebook</key>
@@ -63,8 +57,6 @@
 		<string>jabber-small.png</string>
 		<key>LiveJournal</key>
 		<string>livejournal-small.png</string>
-		<key>Mac</key>
-		<string>dotmac-small.png</string>
 		<key>MSN</key>
 		<string>msn-small.png</string>
 		<key>MySpace</key>
@@ -84,8 +76,6 @@
 	</dict>
 	<key>List</key>
 	<dict>
-		<key>AIM</key>
-		<string>aim-small.png</string>
 		<key>Bonjour</key>
 		<string>bonjour-small.png</string>
 		<key>Facebook</key>
@@ -102,8 +92,6 @@
 		<string>jabber-small.png</string>
 		<key>LiveJournal</key>
 		<string>livejournal-small.png</string>
-		<key>Mac</key>
-		<string>dotmac-small.png</string>
 		<key>MSN</key>
 		<string>msn-small.png</string>
 		<key>MySpace</key>

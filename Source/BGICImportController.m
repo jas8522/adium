@@ -17,8 +17,6 @@
 #import "BGICImportController.h"
 #import "BGICLogImportController.h"
 
-#import "ESAIMService.h"
-#import "ESDotMacService.h"
 #import "ESJabberService.h"
 #import "AWBonjourService.h"
 
@@ -113,16 +111,10 @@
 	NSArray *accountsFromRaw = [[rawPrefsFile valueForKey:@"Accounts"] allValues];
 	
 	// we'll grab these momentarily and use judiciously afterwards, Bonjour is external to this to method, unlike the others
-	ESAIMService *aimService = nil;
-	ESDotMacService *macService = nil;
 	ESJabberService *jabberService = nil;	
 	
 	for (AIService *service in adium.accountController.services) {
-		if ([service.serviceID isEqual:@"AIM"])
-			aimService = (ESAIMService *)service;
-		else if ([service.serviceID isEqual:@"Mac"])
-			macService = (ESDotMacService *)service;
-		else if ([service.serviceID isEqual:@"Jabber"])
+		if ([service.serviceID isEqual:@"Jabber"])
 			jabberService = (ESJabberService *)service;
 		else if ([service.serviceID isEqual:@"Bonjour"])
 			bonjourService = (AWBonjourService *)service;
@@ -372,7 +364,6 @@
 		[importAccountsButton setState:NSOffState]; // reset so we don't do this again
 		currentStep--;
 		// do what's necessary to import here
-		[self importAccountsForService:@"AIM"];
 		[self importAccountsForService:@"Jabber"];
 		[self importAccountsForService:@"SubNet"]; // SubNet is where iChat stores Bonjour accounts
 		if (!blockForBonjour) {

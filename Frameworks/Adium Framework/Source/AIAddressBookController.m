@@ -633,10 +633,6 @@ NSString* serviceIDForJabberUID(NSString *UID);
 			result = kABInstantMessageServiceGoogleTalk;
 		} else if ([serviceID isEqualToString:@"LiveJournal"]) {
 			result = kABInstantMessageServiceJabber;
-		} else if ([serviceID isEqualToString:@"Mac"]) {
-			result = kABInstantMessageServiceAIM;
-		} else if ([serviceID isEqualToString:@"MobileMe"]) {
-			result = kABInstantMessageServiceAIM;
 		}
 	}
 	
@@ -723,11 +719,7 @@ NSString* serviceIDForJabberUID(NSString *UID);
 	ABPerson		*person = nil;
 	NSDictionary	*dict;
 	
-	if ([serviceID isEqualToString:@"Mac"] ||
-		[serviceID isEqualToString:@"MobileMe"]) {
-		dict = [addressBookDict objectForKey:@"AIM"];
-
-	} else if ([serviceID isEqualToString:@"GTalk"]) {
+	if ([serviceID isEqualToString:@"GTalk"]) {
 		dict = [addressBookDict objectForKey:@"Jabber"];
 
 	} else if ([serviceID isEqualToString:@"LiveJournal"]) {
@@ -770,23 +762,7 @@ NSString* serviceIDForJabberUID(NSString *UID);
 			NSString	*email;
 			
 			email = [emails valueAtIndex:i];
-			if ([email hasSuffix:@"@mac.com"]) {
-				//Retrieve all appropriate contacts
-				NSSet	*contacts = [adium.contactController allContactsWithService:[adium.accountController firstServiceWithServiceID:@"Mac"]
-																				  UID:email];
-
-				//Add them to our set
-				[contactSet unionSet:contacts];
-
-			} else if ([email hasSuffix:@"me.com"]) {
-					//Retrieve all appropriate contacts
-					NSSet	*contacts = [adium.contactController allContactsWithService:[adium.accountController firstServiceWithServiceID:@"MobileMe"]
-																					UID:email];
-					
-					//Add them to our set
-					[contactSet unionSet:contacts];
-
-			} else if ([email hasSuffix:@"gmail.com"] || [email hasSuffix:@"googlemail.com"]) {
+			if ([email hasSuffix:@"gmail.com"] || [email hasSuffix:@"googlemail.com"]) {
 				//Retrieve all appropriate contacts
 				NSSet	*contacts = [adium.contactController allContactsWithService:[adium.accountController firstServiceWithServiceID:@"GTalk"]
 																				UID:email];
@@ -1053,14 +1029,8 @@ NSString* serviceIDForOscarUID(NSString *UID)
 	const char	firstCharacter = [UID characterAtIndex:0];
 	
 	//Determine service based on UID
-	if ([UID hasSuffix:@"@mac.com"]) {
-		serviceID = @"Mac";
-	} else if ([UID hasSuffix:@"@me.com"]) {
-		serviceID = @"MobileMe";
-	} else if (firstCharacter >= '0' && firstCharacter <= '9') {
+	if (firstCharacter >= '0' && firstCharacter <= '9') {
 		serviceID = @"ICQ";
-	} else {
-		serviceID = @"AIM";
 	}
 	
 	return serviceID;
@@ -1126,33 +1096,7 @@ NSString* serviceIDForJabberUID(NSString *UID)
 				NSString	*email;
 				
 				email = [emails valueAtIndex:i];
-				if ([email hasSuffix:@"@mac.com"]) {
-					//@mac.com UIDs go into the AIM dictionary
-					if (!(dict = [addressBookDict objectForKey:@"AIM"])) {
-						dict = [[NSMutableDictionary alloc] init];
-						[addressBookDict setObject:dict forKey:@"AIM"];
-					}
-					
-					[dict setObject:[person uniqueId] forKey:email];
-					
-					//Internally we distinguish them as .Mac addresses (for metaContact purposes below)
-					[UIDsArray addObject:email];
-					[servicesArray addObject:@"Mac"];
-
-				} else if ([email hasSuffix:@"me.com"]) {
-					//@me.com UIDs go into the AIM dictionary
-					if (!(dict = [addressBookDict objectForKey:@"AIM"])) {
-						dict = [[NSMutableDictionary alloc] init];
-						[addressBookDict setObject:dict forKey:@"AIM"];
-					}
-					
-					[dict setObject:[person uniqueId] forKey:email];
-					
-					//Internally we distinguish them as .Mac addresses (for metaContact purposes below)
-					[UIDsArray addObject:email];
-					[servicesArray addObject:@"MobileMe"];
-					
-				} else if ([email hasSuffix:@"gmail.com"] || [email hasSuffix:@"googlemail.com"]) {
+				if ([email hasSuffix:@"gmail.com"] || [email hasSuffix:@"googlemail.com"]) {
 					//GTalk UIDs go into the Jabber dictionary
 					if (!(dict = [addressBookDict objectForKey:@"Jabber"])) {
 						dict = [[NSMutableDictionary alloc] init];

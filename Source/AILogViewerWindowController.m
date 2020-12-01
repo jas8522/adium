@@ -2881,21 +2881,12 @@ NSString *handleSpecialCasesForUIDAndServiceClass(NSString *contactUID, NSString
 		/* OSCAR and its specified derivative services need special handling;
 		 *  this is cross-contamination from CBPurpleOscarAccount.
 		 */
-	} else if ([serviceClass isEqualToString:@"AIM"] ||
-			   [serviceClass isEqualToString:@"ICQ"] ||
-			   [serviceClass isEqualToString:@"Mac"] ||
-			   [serviceClass isEqualToString:@"MobileMe"]) {
+	} else if ([serviceClass isEqualToString:@"ICQ"]) {
 		const char	firstCharacter = ([contactUID length] ? [contactUID characterAtIndex:0] : '\0');
 		
 		//Determine service based on UID
-		if ([contactUID hasSuffix:@"@mac.com"]) {
-			serviceClass = @"Mac";
-		} else if ([contactUID hasSuffix:@"@me.com"]) {
-			serviceClass = @"MobileMe";
-		} else if (firstCharacter && (firstCharacter >= '0' && firstCharacter <= '9')) {
+		if (firstCharacter && (firstCharacter >= '0' && firstCharacter <= '9')) {
 			serviceClass = @"ICQ";
-		} else {
-			serviceClass = @"AIM";
 		}
 	}
 	

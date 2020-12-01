@@ -285,12 +285,8 @@
 			if (uid && [uid length]) {
 				const char	firstCharacter = [uid characterAtIndex:0];
 				
-				if ([uid hasSuffix:@"@mac.com"]) {
-					serviceID = @"libpurple-oscar-Mac";
-				} else if (firstCharacter >= '0' && firstCharacter <= '9') {
+				if (firstCharacter >= '0' && firstCharacter <= '9') {
 					serviceID = @"libpurple-oscar-ICQ";
-				} else {
-					serviceID = @"libpurple-oscar-AIM";
 				}
 			}
 		} else if ([serviceID isEqualToString:@"GaduGadu-LIBGAIM"]) {
@@ -312,10 +308,6 @@
 		}
 	} else if ([serviceID isEqualToString:@"rvous-libezv"])
 		serviceID = @"bonjour-libezv";
-	else if ([serviceID isEqualToString:@"joscar-OSCAR-AIM"])
-		serviceID = @"libpurple-oscar-AIM";
-	else if ([serviceID isEqualToString:@"joscar-OSCAR-dotMac"])
-		serviceID = @"libpurple-oscar-Mac";
 	
 	return serviceID;
 }

@@ -803,9 +803,6 @@ static NSString *AIWebURLsWithTitlesPboardType = @"WebURLsWithTitlesPboardType";
 
 		//XXX This should be read in from a plist file at some point.
 		NSDictionary *URLFormats = [NSDictionary dictionaryWithObjectsAndKeys:
-			@"aim://goim?screenname=%@", @"AIM",
-			@"aim://goim?screenname=%@", @"Mac", //.Mac
-			@"aim://goim?screenname=%@", @"MobileMe",
 			@"xmpp:%@?message", @"Jabber",
 			@"xmpp:%@?message", @"GTalk",
 			@"xmpp:%@?message", @"LiveJournal",

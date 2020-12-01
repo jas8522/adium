@@ -29,7 +29,6 @@
 #import <Adium/AIUserIcons.h>
 #import <AIUtilities/AIImageAdditions.h>
 
-#import "ESPurpleAIMAccount.h"
 #import "CBPurpleOscarAccount.h"
 
 #import "adiumPurpleAccounts.h"

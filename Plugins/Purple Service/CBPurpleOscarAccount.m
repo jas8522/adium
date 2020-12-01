@@ -159,14 +159,8 @@
 	const char	firstCharacter = ([contactUID length] ? [contactUID characterAtIndex:0] : '\0');
 
 	//Determine service based on UID
-	if ([contactUID hasSuffix:@"@mac.com"]) {
-		contactServiceID = @"libpurple-oscar-Mac";
-	} else if ([contactUID hasSuffix:@"@me.com"]) {
-		contactServiceID = @"libpurple-oscar-MobileMe";
-	} else if (firstCharacter && (firstCharacter >= '0' && firstCharacter <= '9')) {
+	if (firstCharacter && (firstCharacter >= '0' && firstCharacter <= '9')) {
 		contactServiceID = @"libpurple-oscar-ICQ";
-	} else {
-		contactServiceID = @"libpurple-oscar-AIM";
 	}
 
 	contactService = [adium.accountController serviceWithUniqueID:contactServiceID];

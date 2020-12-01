@@ -14,9 +14,6 @@
  * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#import "ESAIMService.h"
-#import "ESDotMacService.h"
-#import "AIMobileMeService.h"
 #import "ESICQService.h"
 #import "PurpleFacebookService.h"
 #import "ESGaduGaduService.h"

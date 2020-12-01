@@ -2043,8 +2043,7 @@ static void prompt_host_ok_cb(CBPurpleAccount *self, const char *host) {
 /*!
  * @brief Name to use when creating a PurpleAccount for this CBPurpleAccount
  *
- * By default, we just use the formattedUID.  Subclasses can override this to provide other handling,
- * such as appending \@mac.com if necessary for dotMac accounts.
+ * By default, we just use the formattedUID.  Subclasses can override this to provide other handling.
  */
 - (const char *)purpleAccountName
 {
